@@ -8,10 +8,10 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 22, 3, 41, 59, 16, 97);
+        List<Integer> numbers = Arrays.asList(1,2,4, 22, 3, 41, 59, 16, 97);
         Stream<Integer> streamInteger = numbers.stream();
 
-        List<String> strings = Arrays.asList("Nafiul", "Islam", "Nayeem", "Nafiul_Islam_Nayeem", "Nafi", "Red", "Purple");
+        List<String> strings = Arrays.asList("Nafiul", "Islam", "Nayeem", "Nafiul_Islam_Nayeem", "Nafi", "Red", "Purple","Apple","Aspectcaser");
         Stream<String> stringStream = strings.stream();
 
         //add 5 in every numbers here
@@ -31,6 +31,21 @@ public class Main {
         //Given a list of names, find the length of the longest name.
         String longestName = String.valueOf(stringList.stream().reduce((a, b) -> a.length() > b.length() ? a : b));
         System.out.println(longestName);
+
+//        Given a list of integers, find the sum of the squares of the even numbers.
+        Optional<Integer> sumOfSquares = numbers.stream().filter(a->(a%2==0)).map(a->a*a).reduce((a,b)->a+b);
+        System.out.println(sumOfSquares.get());
+
+//        Given a list of integers, find the sum of the squares of the even numbers greater than 5.
+        Optional<Integer> sumOfSquaresGreater = numbers.stream().filter(a->(a%2==0) && a>5).map(a->a*a).reduce((a,b)->a+b);
+        System.out.println(sumOfSquaresGreater.get());
+
+//        Given a list of words, find the length of the words that start with the letter 'A' and have an odd length.
+        List<Integer> words = strings.stream().filter(a -> a.startsWith("A"))
+                .map(a->a.length())
+                .filter(length -> (length % 2 != 0))
+                .toList();
+        System.out.println(words);
 
 
     }
