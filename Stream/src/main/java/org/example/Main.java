@@ -59,6 +59,10 @@ public class Main {
                 .map(a->a/ employeeList.size()).orElse(0.0);
         System.out.println(avgSalary);
 
+        //avarage age and whose age greater than 12
+        int avgAge = employeeList.stream().map(a->a.getAge()).filter(a->a>12).reduce((a,b)->a+b)
+                .map(a->a/ employeeList.size()).orElse(0);
+        System.out.println(avgAge);
 
     }
 }
